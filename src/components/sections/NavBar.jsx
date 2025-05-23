@@ -63,7 +63,7 @@ const NavBar = () => {
                   duration={500}
                   offset={-150}
                   isDynamic={true}
-                  className="text-foreground hover:text-primary transition-colors cursor-pointer ">{item.label}
+                  className="text-foreground hover:text-primary transition-colors cursor-pointer">{item.label}
                 </ScrollLink>
               )}
             </div>

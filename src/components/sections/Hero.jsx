@@ -26,12 +26,12 @@ const Hero = () => {
           <h1 className='space-y-3 flex flex-col tracking-wide'>
             <span>Welcome</span>
             <span className="flex justify-center items-center gap-x-3 lg:flex-row flex-col">
-              <small className='text-xl font-semibold sm:text-3xl md:text-4xl md:inline-block'>I'm Joel Mayol Jr.</small> 
+              <small className='text-2xl font-semibold sm:text-3xl md:text-4xl md:inline-block'>I'm Joel Mayol Jr.</small> 
               <small className="hidden lg:inline-block">/</small> 
-              <small className='text-xl font-bold sm:text-3xl md:text-4xl text-primary md:inline-block'>Frontend Developer!</small>
+              <small className='text-2xl font-bold sm:text-3xl md:text-4xl text-primary md:inline-block'>Frontend Developer!</small>
             </span>
-            <span className="flex items-center gap-x-3 min-w-full md:min-w-xl justify-start mx-auto flex-col md:flex-row text-xl font-semibold sm:text-3xl md:text-4xl">I'm expert in: 
-              <small className='text-md font-bold sm:text-3xl md:text-4xl block md:inline-block text-primary-foreground'>
+            <span className="flex items-center gap-x-3 min-w-full md:min-w-xl justify-start mx-auto flex-col md:flex-row text-2xl font-semibold sm:text-3xl md:text-4xl">I'm expert in: 
+              <small className='text-2xl font-bold min-h-[77px] sm:min-h-auto sm:text-3xl md:text-4xl block md:inline-block text-primary-foreground'>
                 <Typewriter
                 options={{
                   strings: ['WordPress Development', 'Theme Customization', 'Responsive Design', 'Website Development', 'Website Maintenance', 'Performance Optimization'],
@@ -46,7 +46,7 @@ const Hero = () => {
         </div>
        
         <div className='flex flex-col md:flex-row gap-x-1 items-center justify-center'>
-          <a href="#about" className='cta-button border-2 border-primary bg-primary w-full md:w-60'>About Me</a>
+          <a href="#about" className='cta-button border-2 border-primary bg-primary w-full md:w-60 text-white'>About Me</a>
           <a href="#contact" className='cta-button border-2 border-primary w-full md:w-60'>Let's Talk</a>
         </div>
 

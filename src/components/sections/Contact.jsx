@@ -1,6 +1,7 @@
 import { Send } from 'lucide-react'
 import emailjs from 'emailjs-com'
 import { useState } from 'react'
+import Swal from 'sweetalert2'
 
 const Contact = () => {
 
@@ -16,7 +17,12 @@ const Contact = () => {
     e.preventDefault()
 
     emailjs.sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, e.target, import.meta.env.VITE_PUBLIC_KEY).then((result) => {
-      alert("Message Sent")
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "You have successfully submitted",
+        timer: 2000
+      });
       setFormData({name:"", email: "", subject: "", number: "", message: ""})
     }).catch(() => alert("Opps! Something went wrong"))
   }
@@ -45,7 +51,7 @@ const Contact = () => {
                 </div>
 
                 <div className='flex flex-col md:flex-row gap-y-5 md:gap-x-5 justify-around'>
-                  <button type='submit' className='cursor-pointer cta-button border-2 border-primary bg-primary w-full md:w-60 flex flex-row justify-center items-baseline gap-x-2 mx-auto'>Submit <Send size={16} /></button>
+                  <button type='submit' className='text-white cursor-pointer cta-button border-2 border-primary bg-primary w-full md:w-60 flex flex-row justify-center items-baseline gap-x-2 mx-auto'>Submit <Send size={16} /></button>
                 </div>
               </form>
             </div>
