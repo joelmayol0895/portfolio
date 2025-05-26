@@ -3,6 +3,7 @@ import { ArrowDownToLine} from "lucide-react"
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from "@gsap/react"
+import Resume from '@/assets/images/Resume.pdf'
 gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
@@ -48,7 +49,7 @@ const About = () => {
 
         <p className="text-[14px] sm:text-[16px] parag2">As a front-end developer, my primary responsibilities involve creating visually appealing and seamless user interfaces for websites and applications. I work with languages like HTML, CSS, and JavaScript to design and implement responsive, cross-browser compatible, and high-performance web solutions. Collaboration with designers and back-end developers is essential, and my role extends to ensuring a positive user experience through usability and accessibility considerations. Staying current with evolving technologies and trends, along with problem-sol ving skills and a commitment to continuous learning, are key attributes for success in this dynamic field.</p>
 
-        <a href="" target="_blank" className='cta-button border-2 border-primary flex flex-row gap-x-2 items-center'>Download CV <ArrowDownToLine /></a>
+        <a href={Resume} target="_blank" className='cta-button border-2 border-primary flex flex-row gap-x-2 items-center'>Download CV <ArrowDownToLine /></a>
       </div>
       
     </section>

@@ -29,8 +29,13 @@ const ThemeToggle = ({isMenuOpen}) => {
     }
 
   return (
-    <button onClick={toggleTheme} className={`float-right cursor-pointer ${isMenuOpen ? "opacity-0 md:opacity-100" : "opacity-100"}`}>
-        {isDarkMode ? <Moon className="h-6 w-6 text-foreground"/> : <Sun className="h-6 w-6 text-yellow-300"/> }
+    <button onClick={toggleTheme} className={`float-right cursor-pointer flex flex-row justify-center items-center bg-background-secondary px-2 py-1 gap-1 rounded-full shadow-primary shadow-[0_0_10px_rgba(0,171,240,0,5)] ${isMenuOpen ? "opacity-0 md:opacity-100" : "opacity-100"}`}>
+        <div className={`rounded-full p-[2px] ${isDarkMode ? "bg-none" : "bg-gray-500"}`} >
+            <Moon className={`h-4 w-4 text-primary ${isDarkMode ? "opacity-100" : "opacity-0"}`}/>
+        </div>  
+        <div className={`rounded-full p-[2px] ${!isDarkMode ? "bg-none" : "bg-gray-500"}`}>
+            <Sun className={`h-4 w-4 text-yellow-300 ${!isDarkMode ? "opacity-100" : "opacity-0"}`}/>
+        </div>
     </button>
   )
 }

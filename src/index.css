@@ -37,11 +37,10 @@
 
     --card: 0 0% 100%;
 
-    --primary-foreground: 207 68% 41%; /*sky blue*/
-    --primary: 180 99% 27%;
-    
-      /* --primary: 16 93% 57%; */
-    /*--primary-foreground: 180 99% 27%; */
+    /* --primary: 351 95% 63%; */
+    --primary: 230 25% 43%;
+    /* --primary-foreground: 197 100% 47%; */
+    --primary-foreground: 180 99% 27%;
 
     --border: 214 32% 91%;
   }
