@@ -8,12 +8,12 @@ const App = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <>
+      <Analytics />
       <BrowserRouter>
         <Routes>
           <Route index element={<Home isLoaded={isLoaded} setIsLoaded={setIsLoaded} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Analytics />
       </BrowserRouter>
     </>
   )
