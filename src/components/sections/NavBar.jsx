@@ -53,11 +53,11 @@ const NavBar = () => {
   return (
     <nav className={`h-auto py-3 w-full border-b border-gray-600 border-solid transition-all duration-500 z-50 md:fixed md:left-1/2 md:transform md:-translate-x-1/2 md:top-0
       ${!isSticky && "md:w-full"}
-      ${isSticky && `bg-background/95 backdrop-blur-md shadow-md border rounded-[50px] py-2 md:w-[90%] lg:w-[70%] md:top-4 md:transition-[top,width,opacity] md:duration-500 ${isVisible ? "md:opacity-100 md:pointer-events-auto" : "md:opacity-0 md:pointer-events-none"}`}
+      ${isSticky && `bg-background/95 backdrop-blur-md shadow-md md:border md:rounded-[50px] w-full py-2 md:w-[90%] lg:w-[70%] md:top-4 md:transition-[top,width,opacity] md:duration-500 ${isVisible ? "md:opacity-100 md:pointer-events-auto" : "md:opacity-0 md:pointer-events-none"}`}
       ${isMenuOpen && "h-full fixed md:h-auto"}`}>
-      <div className={`flex flex-row justify-between items-center h-full ${isSticky ? "px-6 md:px-5" : "container mx-auto"}`}>
+      <div className={`flex justify-between items-center h-full container mx-auto ${isMenuOpen && "flex-col md:flex-row"}`}>
         <a href="#home" className={`logo transition-all duration-500 ${isMenuOpen ? "opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto" : "opacity-100 pointer-events-auto"}`}>
-          <img src={Logo} alt="logo" className={`object-contain transition-all duration-500 drop-shadow-lg ${isSticky ? "w-13 h-13" : "w-25 h-25"}`} />
+          <img src={Logo} alt="logo" className={`object-contain transition-all duration-500 drop-shadow-lg ${isSticky ? "w-13 h-13" : "w-13 h-13 md:w-25 md:h-25"}`} />
         </a>
 
         <div className="flex md:flex-row align-center flex-row-reverse">
@@ -79,7 +79,7 @@ const NavBar = () => {
           </div>
 
           {/*Mobile Menu*/}
-          <button onClick={() => setIsMenuOpen((prev) => !prev)} className={`z-50 text-foreground md:hidden ${isMenuOpen && "absolute top-[51px] right-auto"}`}>
+          <button onClick={() => setIsMenuOpen((prev) => !prev)} className={`z-50 text-foreground md:hidden ${isMenuOpen && "absolute top-[25px] right-[15px]"}`}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
