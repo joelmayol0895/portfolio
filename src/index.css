@@ -4,6 +4,7 @@
 @theme {
   --color-background: hsl(var(--background));
   --color-background-secondary: hsl(var(--background-secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
 
   --color-border: hsl(var(--border));
   --color-foreground: hsl(var(--foreground));
@@ -16,31 +17,37 @@
 
 @layer base {
   :root {
-    --background: 205 67% 10%; /*dark blue*/
-    --background-secondary: 206 70% 16%; /*sky blue*/
+    --background: 205 67% 10%;
+    /*dark blue*/
+    --background-secondary: 206 70% 16%;
+    /*sky blue*/
 
-    --foreground: 213 31% 91%;
+    --foreground: 215 33% 78%;
+    --secondary-foreground: 0 0% 100%;
 
     --card: 197 47% 8%;
 
-    --primary: 197 100% 47%; /*sky blue*/
-    --primary-foreground: 351 95% 63%; /*orange*/
+    --primary: 197 100% 47%;
+    /*sky blue*/
+    --primary-foreground: 351 95% 63%;
+    /*orange*/
 
     --border: 217 33% 20%;
   }
 
   .light {
-    --background: 40 14% 88%;
-    --background-secondary: 40 21% 95%;
+    --background: 195 57.27% 92.97%;
+    --background-secondary: 0 0% 100%;
 
-    --foreground: 222 47% 11%;
+    --foreground: 0 6% 19%;
+    --secondary-foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
 
     /* --primary: 351 95% 63%; */
-    --primary: 230 25% 43%;
+    --primary: 197 100% 47%;
     /* --primary-foreground: 197 100% 47%; */
-    --primary-foreground: 180 99% 27%;
+    --primary-foreground: 351 95% 63%;
 
     --border: 214 32% 91%;
   }
@@ -62,31 +69,39 @@
 
 @utility container {
   margin-inline: auto;
-  padding-inline: 2rem;
+  padding-inline: 1rem;
 
-  @media (width >= 640px) {
+  @media (width >=769px) {
+    padding-inline: 2rem;
+  }
+
+  @media (width >=640px) {
     max-width: 640px;
   }
-  @media (width >= 768px) {
-      max-width: 768px;
+
+  @media (width >=768px) {
+    max-width: 768px;
   }
-  @media (width >= 1024px) {
-      max-width: 1024px;
+
+  @media (width >=1024px) {
+    max-width: 1024px;
   }
-  @media (width >= 1200px) {
-      max-width: 1200px;
+
+  @media (width >=1200px) {
+    max-width: 1200px;
   }
-  @media (width >= 1400px) {
-      max-width: 1400px;
+
+  @media (width >=1400px) {
+    max-width: 1400px;
   }
 }
 
 @utility cta-button {
-  @apply px-9 py-3 mx-2 my-3 rounded-xl font-medium transition-all duration-300 shadow-primary shadow-[0_0_10px_rgba(0,171,240,0,5)] hover:shadow-none hover:scale-105 active:scale-105;
+  @apply px-9 py-3 mx-2 my-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 active:scale-105 shadow-lg;
 }
 
 @utility social-icons {
-  @apply border-2 border-primary p-2 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-primary shadow-primary shadow-[0_0_10px_rgba(0,171,240,0,5)] hover:bg-primary hover:text-foreground hover:shadow-none hover:scale-105 active:scale-105;
+  @apply border-2 border-primary p-2 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-foreground hover:scale-105 active:scale-105 shadow-lg;
 }
 
 .active {
@@ -102,9 +117,12 @@
 @layer utilities {
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-15px);
     }
@@ -118,6 +136,7 @@
     0% {
       transform: translateX(-100%);
     }
+
     100% {
       transform: translateX(250%);
     }
@@ -128,9 +147,12 @@
   }
 
   @keyframes blink {
-    0%, 100% {
+
+    0%,
+    100% {
       opacity: 1;
     }
+
     50% {
       opacity: 0;
     }
@@ -145,8 +167,8 @@
   position: relative;
 }
 
-.swiper-slide:not(.swiper-slide-visible), 
-.swiper-slide.swiper-slide-visible figure, 
+.swiper-slide:not(.swiper-slide-visible),
+.swiper-slide.swiper-slide-visible figure,
 .swiper-slide.swiper-slide-active figure {
   height: 450px;
   overflow: hidden;
@@ -165,8 +187,9 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .swiper-slide:not(.swiper-slide-visible), 
-  .swiper-slide.swiper-slide-visible figure, 
+
+  .swiper-slide:not(.swiper-slide-visible),
+  .swiper-slide.swiper-slide-visible figure,
   .swiper-slide.swiper-slide-active figure {
     height: 350px;
     overflow: hidden;
@@ -174,8 +197,9 @@
 }
 
 @media screen and (max-width: 900px) {
-  .swiper-slide:not(.swiper-slide-visible), 
-  .swiper-slide.swiper-slide-visible figure, 
+
+  .swiper-slide:not(.swiper-slide-visible),
+  .swiper-slide.swiper-slide-visible figure,
   .swiper-slide.swiper-slide-active figure {
     height: 250px;
     overflow: hidden;
@@ -183,12 +207,13 @@
 }
 
 @keyframes spin {
-    from {
-      transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
-    }
-    to {
-       transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
-    }
+  from {
+    transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
+  }
 }
 
 #skills .skill-set {
@@ -223,4 +248,3 @@
   height: calc(100% - 2 * var(--offset));
   width: calc(100% - 2 * var(--offset));
 }
-

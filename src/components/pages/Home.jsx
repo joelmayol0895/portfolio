@@ -13,63 +13,65 @@ import { useState, useEffect } from 'react';
 import gsap from 'gsap'
 import { useRef } from 'react'
 import { useGSAP } from "@gsap/react"
+import Footer from '../sections/Footer';
 
-const Home = ({isLoaded, setIsLoaded}) => {
+const Home = ({ isLoaded, setIsLoaded }) => {
 
   const [isScroll, setIsScroll] = useState(false);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        const triggerPoint = 1500;
-        setIsScroll(window.scrollY > triggerPoint);
-      }
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, [])
 
-    const scrollToTop = () => {
-      animateScroll.scrollToTop({
-        duration: 500,
-        smooth: true,
-      });
-    };
+  useEffect(() => {
+    const handleScroll = () => {
+      const triggerPoint = 1500;
+      setIsScroll(window.scrollY > triggerPoint);
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [])
 
-    const boxBouncing = useRef();
-    const fromTheTop = useRef();
+  const scrollToTop = () => {
+    animateScroll.scrollToTop({
+      duration: 500,
+      smooth: true,
+    });
+  };
 
-    useGSAP(() => {
-      gsap.to(boxBouncing.current, {
-        y: -30,
-        duration: 1,
-        ease: "bounce.out",
-        repeat: -1,  
-        yoyo: true  
-      });
+  const boxBouncing = useRef();
+  const fromTheTop = useRef();
 
-    }, {});
+  useGSAP(() => {
+    gsap.to(boxBouncing.current, {
+      y: -30,
+      duration: 1,
+      ease: "bounce.out",
+      repeat: -1,
+      yoyo: true
+    });
+
+  }, {});
 
   return (
     <>
-        {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
-        <div className={`min-h-screen bg-background text-foreground overflow-x-hidden transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
-          <header className='h-[125px]'>
-            <NavBar />
-          </header>
-          <main>
-            <Hero />
-            <About />
-            <Experience />
-            <Skills />
-            <Projects />
-            <Contact />
-          </main>
-          <footer>
-            <CopyrightFooter />
-            <button ref={boxBouncing} onClick={scrollToTop} className={`${isScroll ? "opacity-100" : "opacity-0"} transition-all fixed right-4 bottom-4 cursor-pointer bg-primary-foreground/70 p-3 flex justify-center items-center rounded-sm`}>
-              <ArrowUpFromLine size={20} />
-            </button>
-          </footer>
-        </div>
+      {!isLoaded && <LoadingScreen onComplete={() => setIsLoaded(true)} />}
+      <div className={`min-h-screen bg-background text-foreground overflow-x-hidden transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
+        <header className='h-[125px]'>
+          <NavBar />
+        </header>
+        <main>
+          <Hero />
+          <About />
+          <Experience />
+          <Skills />
+          <Projects />
+          <Contact />
+        </main>
+        <footer>
+          <Footer />
+          <CopyrightFooter />
+          <button ref={boxBouncing} onClick={scrollToTop} className={`${isScroll ? "opacity-100" : "opacity-0"} transition-all fixed right-4 bottom-4 cursor-pointer bg-primary-foreground/70 p-3 flex justify-center items-center rounded-sm`}>
+            <ArrowUpFromLine size={20} />
+          </button>
+        </footer>
+      </div>
     </>
   )
 }
