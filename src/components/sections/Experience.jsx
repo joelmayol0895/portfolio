@@ -1,13 +1,27 @@
 import { SquareCheckBig, ArrowBigRightDash } from "lucide-react"
 import WorkExperience from "@/components/data/WorkExperience";
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 const Experience = () => {
 
-    const [isExpand, setIsExpand] = useState(0);
+    const [isExpand, setIsExpand] = useState(null);
+    const itemRefs = useRef([]);
 
     const toggleExpand = (id) => {
-        setIsExpand(isExpand === id ? null : id)
+        const newId = isExpand === id ? null : id;
+        setIsExpand(newId);
+
+        if (newId !== null) {
+            // allow the CSS expand transition to start, then scroll the expanded item into view
+            setTimeout(() => {
+                const el = itemRefs.current[newId];
+                if (!el) return;
+                const headerOffset = 80; // adjust if you have a fixed header
+                const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+                if (typeof el.focus === 'function') el.focus();
+            }, 220);
+        }
     }
 
     return (
@@ -17,7 +31,7 @@ const Experience = () => {
                 <div>
                     <h3 className='text-[6.5vw] sm:text-[4.5vw] md:text-3xl font-bold mb-15'><span className='text-primary-foreground'>Work</span> Experience</h3>
                     {WorkExperience.map((exp, key) => (
-                        <div className={`flex flex-row justify-around items-start ${isExpand === key ? "h-full" : "overflow-hidden"}`} key={key}>
+                        <div ref={el => itemRefs.current[key] = el} tabIndex={-1} className={`flex flex-row justify-around items-start ${isExpand === key ? "h-full" : "overflow-hidden"}`} key={key}>
                             <div className='w-[30%] lg:flex flex-row py-5 pr-8 text-right justify-end hidden'>
                                 <h4 className="text-foreground/80 text-md md:text-2xl font-normal bg-linear-to-r from-background/80 to-background-secondary rounded-md p-4 w-xl cursor-pointer" onClick={() => toggleExpand(key)}>{exp.year}</h4>
                             </div>
